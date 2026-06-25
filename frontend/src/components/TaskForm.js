@@ -6,7 +6,7 @@ function TaskForm({ AddTask, editingTask }) {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [priority, setPriority] = useState('');
+    const [priority, setPriority] = useState('medium');
     const [error, setError] = useState(null);
 
 
@@ -17,7 +17,9 @@ function TaskForm({ AddTask, editingTask }) {
       setDescription(editingTask.description);
       setPriority(editingTask.priority);
     } else {
-      setTitle(''); setDescription(''); setPriority('');
+      setTitle('');
+    setDescription('');
+    setPriority('medium');
     }
   }, [editingTask]);
 
@@ -31,7 +33,7 @@ function TaskForm({ AddTask, editingTask }) {
         AddTask({ title, description, priority });
         setTitle('');
         setDescription('');
-        setPriority('');
+        setPriority('medium');
     }
 
     return (
@@ -52,7 +54,6 @@ function TaskForm({ AddTask, editingTask }) {
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
             >
-                <option value="">Select Priority</option>
                 <option value="low">low</option>
                 <option value="medium">medium</option>
                 <option value="high">high</option>

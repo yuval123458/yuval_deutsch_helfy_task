@@ -6,13 +6,13 @@ function TaskCarousel({tasks, onToggle, onDelete, onEdit}) {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     
-    const handlePrev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? tasks.length - 1 : prevIndex - 1));
-    };
-
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === tasks.length - 1 ? 0 : prevIndex + 1));
-    };
+  setCurrentIndex(prev => (prev + 1) % tasks.length);
+};
+
+const handlePrev = () => {
+  setCurrentIndex(prev => (prev - 1 + tasks.length) % tasks.length);
+};
 
     if(!tasks || tasks.length === 0) {
         return <p>No tasks available</p>;
@@ -25,10 +25,16 @@ function TaskCarousel({tasks, onToggle, onDelete, onEdit}) {
         <div className="carousel">
             <button onClick={handlePrev}>{'<'}</button>
 
-            <div className= "carousel-items"></div>
-            <div className="carousel-item">
-                {tasks.length > 0 && <TaskItem task={tasks[Index]} onDelete={onDelete} onToggle={onToggle} onEdit={onEdit} />}
-            </div>
+<div className="carousel-slide">                                  
+  <div className="carousel-item"                                       
+       style={{ transform: `translateX(-${Index * 100}%)` }}>
+            {tasks.map(task => (
+    <div className="carousel-card" key={task.id}>
+        <TaskItem task={task} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit} />
+    </div>
+    ))}
+    </div>
+    </div>  
             <button onClick={handleNext}>{'>'}</button>
         </div>
     )

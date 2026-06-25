@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+}
+
+.app {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-priority{
+    display: inline-block;
+    color: lavender;
+
+}
+.item-priority.low{
+    background: green;
+}
+.item-priority.medium{
+    background: rgb(36, 108, 36);
+
+}
+.item-priority.high{
+    background: red;
+}
+
+.task-item{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    gap: 10px;
+    background: #f5dddd;
+    padding: 20px;
+    max-width: 250px;
+    text-align: center;
+}
+
+.item-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide{
+    width: 100%;
+      overflow: hidden;
+      max-width: 320px;
+}
+
+.carousel-item{
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel-card{
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 25px;
+}
+input, textarea, select {
+    padding: 10px 12px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+button {
+    padding: 8px 16px;
+}
+
+@media (max-width: 480px) {
+  .carousel { gap: 6px; }
+  .task-item h3 { font-size: 16px; }
+}
